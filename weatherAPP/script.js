@@ -1,4 +1,12 @@
-//   Write the functions that fetch the API. You’re going to want functions that can take a location and return the weather data for that location.
+document
+  .getElementById("weather-form") // find the form
+  .addEventListener("submit", function (event) {
+    //listens for the submit event
+    event.preventDefault(); // Prevent the form from submitting and reloading the page which is the default behavior
+    const location = document.getElementById("location-input").value; // Get the value of the input field with id location-input
+    returnWeatherData(location); // Call the function to fetch weather data with the user's location
+  });
+
 const API_KEY = "1e0847d19e9704240e26bba3c3c4b230";
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`;
 
@@ -24,7 +32,7 @@ function returnWeatherData(location) {
     });
 }
 function processWeatherData(data) {
-  // create an object
+  // create an object using dot notation
   const weatherInfo = {
     city: data.name,
     country: data.sys.country,
