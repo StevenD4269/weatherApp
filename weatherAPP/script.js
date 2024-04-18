@@ -1,5 +1,3 @@
-
-
 // fetch template exmaple:
 // fetch('https://api.example.com/data')
 //   .then(function(response) {
@@ -13,19 +11,18 @@
 //   });
 
 //   Write the functions that fetch the API. You’re going to want functions that can take a location and return the weather data for that location.
-fetch(`https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}`) {.then((whateverstuff) => {})}
-//   Write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app.
+const API_KEY = "1e0847d19e9704240e26bba3c3c4b230";
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`;
 
-//   Create a form that will let users input their location and will fetch the weather info.
-//   Display the information on your webpage using the DOM.
-
-
-
-// steps i need to breakdown
-// Create a function that takes a location parameter.
-// make variables for the information to place into your function
-// The fetch() function is used to make the API request.
-// If the response is not okay, write something to have an error thrown.
-// If the response is okay, the response body is parsed as JSON.
-// The weather data is returned to the caller.
-// The function catches any errors that occur during the fetch operation.
+function returnWeatherData(location) {
+  fetch(apiUrl) // creating a fetch to query the internet site for info, apiURL gives directions where to go
+    .then((webPackage) => {
+      //.then says when you fetch it do this, webPackage has ALL the info we asked for inside it
+      if (!webPackage.ok) {
+        //
+        throw new Error("Network response was not ok");
+      }
+      return webPackage.json();
+    })
+    .then((data) => {});
+}
