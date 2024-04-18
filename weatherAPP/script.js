@@ -7,10 +7,10 @@ document
     returnWeatherData(location); // Call the function to fetch weather data with the user's location
   });
 
-const API_KEY = "1e0847d19e9704240e26bba3c3c4b230";
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`;
-
 function returnWeatherData(location) {
+  const API_KEY = "1e0847d19e9704240e26bba3c3c4b230";
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`;
+
   fetch(apiUrl) // creating a fetch to query the internet site for info, apiURL gives directions where to go
     .then((webPackage) => {
       //.then says when you fetch it do this, webPackage has ALL the info we asked for inside it
@@ -42,12 +42,16 @@ function processWeatherData(data) {
 }
 
 function displayWeatherData(weatherData) {
-  //Starts special instructions using a function
+  //Starts special instruction using a function
   const weatherInfoContainer = document.getElementById("weather-info");
-  //this finds a specific spot on our page to show the weather info
-  weatherInfoContainer.innerHTML = `
-        <h2>Weather in ${weatherData.city}, ${weatherData.country}</h2>
-        <p>Temperature: ${weatherData.temperature} K</p>
-        <p>Description: ${weatherData.description}</p>
-    `;
+  //this finds a specific spot on the page to show the weather info
+  weatherInfoContainer.innerHTML =
+    //now fill the spot with text
+    `<h2>Weather in ${weatherData.city}, ${weatherData.country}</h2>
+        <p>Temperature: ${weatherData.temperature} K</p>`;
+} //use weatherData which was my variable for the now unpacked and readable information
+
+function displayErrorMessage(message) {
+  const weatherInfoContainer = document.getElementById("weather-info");
+  weatherInfoContainer.innerHTML = `<p>${message}</p>`;
 }
