@@ -40,3 +40,14 @@ function processWeatherData(data) {
   };
   return weatherInfo;
 }
+
+function displayWeatherData(weatherData) {
+  //Starts special instructions using a function
+  const weatherInfoContainer = document.getElementById("weather-info");
+  //this finds a specific spot on our page to show the weather info
+  weatherInfoContainer.innerHTML = `
+        <h2>Weather in ${weatherData.city}, ${weatherData.country}</h2>
+        <p>Temperature: ${weatherData.temperature} K</p>
+        <p>Description: ${weatherData.description}</p>
+    `;
+}
